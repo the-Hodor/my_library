@@ -1,0 +1,66 @@
+{% extends "library/base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<div class="button-container">
+    <a href="{% url 'add_book' %}" class="add-book-btn">Добавить книгу</a>
+</div>
+
+<div class="filter-container">
+    <div class="filters-block">
+    <!-- кнопки -->
+        <div class="status-filters">
+            <a href="?status=&title={{ request.GET.title }}&author={{ request.GET.author }}&genre={{ request.GET.genre }}"
+                class="filter-btn {% if not request.GET.status %}active{% endif %}">Все</a>
+            <a href="?status=reading&title={{ request.GET.title }}&author={{ request.GET.author }}&genre={{ request.GET.genre }}"
+                class="filter-btn {% if request.GET.status == 'reading' %}active{% endif %}">В процессе</a>
+            <a href="?status=unread&title={{ request.GET.title }}&author={{ request.GET.author }}&genre={{ request.GET.genre }}"
+                class="filter-btn {% if request.GET.status == 'unread' %}active{% endif %}">К прочтению</a>
+            <a href="?status=read&title={{ request.GET.title }}&author={{ request.GET.author }}&genre={{ request.GET.genre }}"
+                class="filter-btn {% if request.GET.status == 'read' %}active{% endif %}">Прочитано</a>
+        </div>
+
+    <!-- форма фильтров -->
+        <form method="get" id="filter-form" class="filters-form">
+        <!-- скрытое поле для сохранения статуса -->
+            <input type="hidden" name="status" value="{{ request.GET.status }}">
+
+            <input type="text" name="title" placeholder="Название книги" value="{{ request.GET.title }}">
+            <input type="text" name="author" placeholder="Автор" value="{{ request.GET.author }}">
+            <input type="text" name="genre" placeholder="Жанр" value="{{ request.GET.genre }}">
+
+            <button type="submit">Фильтровать</button>
+            <a href="{% url 'main' %}" class="reset-btn">Сбросить</a>
+        </form>
+    </div>
+
+    <div class="book-cards">
+        {% for book in books %}
+        <div class="book-card">
+            <a href="{% url 'book_detail' book.pk %}" class="book-card-link">
+                <strong>{{ book.title }}</strong>
+                <p>Автор: {{ book.author }}</p>
+                <p>Жанры: {{ book.genres.all|join:", " }}</p>
+                <p>Статус: {{ book.get_status_display }}</p>
+            </a>
+        </div>
+        {% empty %}
+        <p>Книг нет.</p>
+        {% endfor %}
+    </div>
+
+</div>
+
+<div class="pagination">
+        {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">Назад</a>
+        {% endif %}
+
+        <span>Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Вперёд</a>
+        {% endif %}
+    </div>
+{% endblock %}

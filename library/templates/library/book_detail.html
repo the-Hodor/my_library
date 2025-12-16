@@ -1,0 +1,31 @@
+{% extends "library/base.html" %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+<h2>{{ book.title }}</h2>
+<p><strong>Автор:</strong> {{ book.author }}</p>
+<p><strong>Жанры:</strong> {{ book.genres.all|join:", " }}</p>
+<p><strong>Статус:</strong> {{ book.get_status_display }}</p>
+<p><strong>Описание:</strong> {{ book.description }}</p>
+
+<a href="{% url 'edit_book' book.pk %}" class="edit-btn">Редактировать</a>
+
+<hr>
+
+<h3>Заметки</h3>
+<ul>
+    {% for note in notes %}
+        <li>{{ note.note }} ({{ note.created_at|date:"d.m.Y H:i" }})</li>
+    {% empty %}
+        <li>Заметок пока нет</li>
+    {% endfor %}
+</ul>
+
+<h3>Добавить новую заметку</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Добавить заметку</button>
+</form>
+{% endblock %}
