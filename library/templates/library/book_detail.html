@@ -9,9 +9,6 @@
 <p><strong>Статус:</strong> {{ book.get_status_display }}</p>
 <p><strong>Описание:</strong> {{ book.description }}</p>
 
-<a href="{% url 'edit_book' book.pk %}" class="edit-btn">Редактировать</a>
-
-<hr>
 
 <h3>Заметки</h3>
 <ul>
@@ -28,4 +25,6 @@
     {{ form.as_p }}
     <button type="submit">Добавить заметку</button>
 </form>
+
+<a href="{% url 'edit_book' book.pk %}" class="edit-btn">Редактировать</a>
 {% endblock %}
