@@ -20,11 +20,12 @@
 </ul>
 
 <h3>Добавить новую заметку</h3>
-<form method="post">
+<form method="post" style="margin-bottom: 20px;">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Добавить заметку</button>
 </form>
+
 
 <a href="{% url 'edit_book' book.pk %}" class="edit-btn">Редактировать</a>
 {% endblock %}

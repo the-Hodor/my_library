@@ -29,7 +29,7 @@
 }
 
 .edit-btn {
-    margin-top: 10px;
+    margin-top: 20px;
     padding: 5px 10px;
     background-color: #006400;
     color: white;
@@ -220,8 +220,15 @@
 }
 
 .pagination {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     text-align: center;
-    margin: 20px 0;
+    background-color: #f9f9f9;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+    z-index: 1000;
 }
 
 .pagination a {
