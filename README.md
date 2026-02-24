@@ -32,32 +32,27 @@ Pytest
 
 Docker
 
-⚙️ Запуск проекта
+⚙️ Запуск проекта  
 
-🔹 Через Docker
+🔹 Через Docker  
 
-git clone https://github.com/the-Hodor/my_library.git
-
-cd my_library-main
-docker compose up --build
+git clone https://github.com/your_username/your_repository.git  
+cd your_repository  
+docker compose up --build  
 
 После запуска сервер будет доступен по адресу:
 
 http://localhost:8000
 
-🔹 Локальный запуск (без Docker)
+🔹 Локальный запуск (без Docker)  
 
-python -m venv venv
+python -m venv venv  
+source venv/bin/activate  # Windows: venv\Scripts\activate  
+pip install -r requirements.txt  
+python manage.py migrate  
+python manage.py runserver  
 
-source venv/bin/activate  # Windows: venv\Scripts\activate
-
-pip install -r requirements.txt
-
-python manage.py migrate
-
-python manage.py runserver
-
-📖 Swagger документация
+📖 Swagger документация  
 
 После запуска проекта:
 
@@ -71,7 +66,7 @@ http://localhost:8000/swagger/
 
 Тестировать API без Postman
 
-🔐 JWT-аутентификация
+🔐 JWT-аутентификация  
 
 Получить токен
 
@@ -82,19 +77,21 @@ POST запрос:
 Body:
 
 {  
- "username": "your_username",  
- "password": "your_password"  
-}
+  "username": "your_username",  
+  "password": "your_password"  
+}   
 
 Ответ:
 
-{   
+{  
   "access": "ACCESS_TOKEN",  
   "refresh": "REFRESH_TOKEN"  
 }  
 
 Обновить токен  
+
 /api/token/refresh/  
+
 Использование токена  
 
 Добавить в заголовок запроса:
@@ -105,14 +102,14 @@ Authorization: Bearer <access_token>
 
 Все endpoints находятся под префиксом:
 
-/api/  
+/api/
 
-📖 Книги  
+📖 Книги
 
 Метод	Endpoint	Описание  
-GET	   /api/books/	Список книг пользователя  
+GET	/api/books/	Список книг пользователя  
 POST	/api/books/	Создать книгу  
-PUT	  /api/update_books/<int:pk>/	Обновить книгу  
+PUT	/api/update_books/<int:pk>/	Обновить книгу  
 POST	/api/mark_read/<int:pk>/	Отметить книгу как прочитанную  
 
 📝 Заметки
