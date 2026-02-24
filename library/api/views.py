@@ -76,7 +76,7 @@ class NoteCreateAPIView(APIView):
         create_note(
             user=request.user,
             book=book,
-            text=serializer.validated_data["text"],
+            data=serializer.validated_data["text"],
         )
 
         return Response({"status": "ok"}, status=status.HTTP_201_CREATED)
