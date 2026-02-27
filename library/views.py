@@ -14,7 +14,7 @@ from .services.note_service import create_note
 def main(request):
     books = get_user_books(request.user, request.GET)
 
-    paginator = Paginator(books, 36)
+    paginator = Paginator(books, 20)
     page_obj = paginator.get_page(request.GET.get("page"))
     genres = Genre.objects.all()
 
