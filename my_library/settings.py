@@ -28,6 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ALLOWED_HOSTS = []
 import os
 
+DEBUG = os.environ.get("DEBUG", "True") == "True"
+
+ALLOWED_HOSTS = os.environ.get( "ALLOWED_HOSTS", "*" ).split(",")
 # SECURITY
 SECRET_KEY = os.environ.get(
     "SECRET_KEY",
