@@ -1,5 +1,7 @@
 from ..models import Book
 from django.shortcuts import get_object_or_404
+from django.db.models.functions import Lower
+
 
 
 def get_user_book(user, book_id):
@@ -14,15 +16,15 @@ def get_user_books(user, filters: dict):
 
     title = filters.get("title")
     if title:
-        books = books.filter(title__icontains=title)
+        books = books.filter(title__iregex=title)
 
     author = filters.get("author")
     if author:
-        books = books.filter(author__icontains=author)
+        books = books.filter(author__iregex=author)
 
     genre = filters.get("genre")
     if genre:
-        books = books.filter(genres__name__icontains=genre).distinct()
+        books = books.filter(genres__name__iregex=genre).distinct()
 
     return books
 
