@@ -31,7 +31,7 @@ Swagger (опционально, для разработчика): https://my-li
 - Django REST Framework 3.16.1  
 - JWT — `djangorestframework_simplejwt`  
 - Swagger — `drf-yasg`  
-- SQLite  
+- PostgreSql  
 - Pytest  
 - Docker  
 
