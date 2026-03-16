@@ -8,10 +8,11 @@ HR может проверить проект без командной стро
 
 Открой браузер по ссылке:
 
-Главная страница библиотеки: https://my-library-unuo.onrender.com/library/main/
- ✅
+Главная страница библиотеки: https://my-library-unuo.onrender.com/library/main/✅  
 
-Swagger (опционально, для разработчика): https://my-library-unuo.onrender.com/swagger/
+Swagger (опционально, для разработчика): https://my-library-unuo.onrender.com/swagger/️ (прочтите замечание ниже) 
+
+⚠️ Замечание: иногда форма для POST/PUT запросов при первом нажатии Try it out может не отображаться. Чтобы обойти, сверните и разверните запрос повторно.
 
 Проект позволяет:  
 
