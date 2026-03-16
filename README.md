@@ -8,7 +8,7 @@ HR может проверить проект без командной стро
 
 Открой браузер по ссылке:
 
-Главная страница библиотеки: https://my-library-unuo.onrender.com/library/main/✅  
+Главная страница библиотеки: https://my-library-unuo.onrender.com/library/main/ ✅  
 
 Swagger (опционально, для разработчика): https://my-library-unuo.onrender.com/swagger/️ (прочтите замечание ниже) 
 
